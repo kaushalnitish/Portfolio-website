@@ -35,7 +35,6 @@ import ContactTerminal from './components/ContactTerminal';
 import ClientLogo from './components/ClientLogo';
 import DiagonalShowcase from './components/DiagonalShowcase';
 import EnquiryForm from './components/EnquiryForm';
-import ServicesOverview from './components/ServicesOverview';
 import CreativeCampaigns from './components/CreativeCampaigns';
 import FAQPage from './components/FAQPage';
 
@@ -165,7 +164,7 @@ export default function App() {
                 {/* 1. NAME/HEADLINE */}
                 <h1 
                   className="order-1 text-[1.85rem] xs:text-[2.15rem] sm:text-[2.5rem] md:text-5xl lg:text-[4.8rem] xl:text-[5.5rem] font-sans font-black tracking-tighter leading-[0.82] md:leading-[0.85] text-[#111111] uppercase select-none cursor-default md:col-span-6 md:col-start-1 md:row-start-1 md:self-end w-full mb-3.5 md:mb-0"
-                  style={{ marginTop: '2px', marginBottom: '4px', marginLeft: '-1px' }}
+                  style={{ marginTop: '12px', marginBottom: '4px', marginLeft: '-1px' }}
                 >
                   NITISH<br />KAUSHAL
                 </h1>
@@ -189,7 +188,7 @@ export default function App() {
                 </div>
 
                 {/* 3. HERO IMAGE BETWEEN CONTENT AND BUTTONS ON MOBILE */}
-                <div className="order-3 md:order-none md:col-span-6 md:col-start-7 md:row-start-1 md:row-span-3 w-full md:h-full flex items-center md:items-end justify-center relative select-none z-20 overflow-visible py-2 md:py-0 mb-6 md:mb-0">
+                <div className="order-3 md:order-none md:col-span-6 md:col-start-7 md:row-start-1 md:row-span-3 w-full h-[240px] xs:h-[280px] sm:h-[320px] md:h-full min-h-[240px] xs:min-h-[280px] sm:min-h-[320px] md:min-h-0 max-w-[250px] xs:max-w-[280px] sm:max-w-[320px] md:max-w-none mx-auto flex items-center md:items-end justify-center relative select-none z-20 overflow-visible py-2 md:py-0 mb-6 md:mb-0">
                   {/* Premium soft ambient radial shadow behind key subject focus area */}
                   <div className="absolute top-[10%] bottom-[5%] left-[10%] right-[10%] md:top-[15%] md:bottom-[5%] h-[80%] md:h-[75%] bg-[#111111]/[0.04] rounded-full blur-[30px] md:blur-[70px] pointer-events-none z-10" />
 
@@ -332,9 +331,6 @@ export default function App() {
                   referrerPolicy="no-referrer"
                 />
               </div>
-
-              {/* SECTION 02.5: CAPABILITIES & SERVICES SPECIFICATION */}
-              <ServicesOverview />
 
               {/* SECTION 06: RECOGNITION & APPROACH */}
               <section id="approach" className="space-y-8 pt-8">
@@ -624,16 +620,11 @@ export default function App() {
               animate="animate"
               exit="exit"
               variants={pageVariants}
-              className="max-w-4xl mx-auto px-4 mt-2 md:mt-4 space-y-8"
+              className="max-w-4xl mx-auto px-4 pt-4 pb-12"
             >
               
               {/* PRIMARY CONTACT COMPONENT */}
               <ContactTerminal />
-
-              {/* QUICK RECENT LOG STATEMENT */}
-              <div className="bg-[#FAF8F4] border-2 border-[#111111] p-4 rounded-xl text-center text-[10px] font-mono text-[#111111]/80 font-extrabold tracking-widest shadow-[2px_2px_0px_0px_#111111]">
-                SECURE END-TO-END DATA TRANSMISSION // NO COOKIES RECORDED
-              </div>
 
             </motion.div>
           )}

@@ -260,10 +260,6 @@ export default function ContactTerminal() {
 
       {/* Embedded High-End Business Enquiry Form */}
       <div className="bg-[#FAF8F4] border-2 border-[#111111] rounded-2xl p-4 sm:p-6 md:p-10 shadow-[4px_4px_0px_0px_#111111] sm:shadow-[6px_6px_0px_0px_#111111] relative overflow-hidden mt-6 sm:mt-8 text-left">
-        
-        <div className="absolute top-0 right-0 p-3 font-mono text-[8px] text-[#666666]/30 select-none tracking-widest uppercase pointer-events-none">
-          SYSTEM: LEAD_CAP_OFFICIAL
-        </div>
 
         <AnimatePresence mode="wait">
           {!isSuccess ? (
@@ -277,11 +273,8 @@ export default function ContactTerminal() {
             >
               
               <div className="space-y-2 text-left">
-                <div className="inline-flex items-center gap-1 bg-[#FAF8F4] border border-[#111111]/30 max-w-max rounded-full py-0.5 px-3 block">
-                  <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
-                  <span className="text-[9px] font-mono font-bold tracking-wider text-[#111111]/70 uppercase">
-                    SECURE INTAKE // DIRECT TO FOUNDER
-                  </span>
+                <div className="text-[10px] font-mono font-black uppercase tracking-widest text-[#111111]/70 select-none">
+                  SPECIFICATION FORM
                 </div>
                 <h3 className="font-sans text-xl md:text-2xl font-black text-[#111111] uppercase tracking-tight">
                   Submit Project Specifications
@@ -433,7 +426,7 @@ export default function ContactTerminal() {
                   {isSubmitting ? (
                     <>
                       <Hourglass className="w-4 h-4 animate-spin" />
-                      <span>Transmitting specifications...</span>
+                      <span>Submitting specifications...</span>
                     </>
                   ) : (
                     <>
