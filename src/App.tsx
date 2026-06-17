@@ -89,7 +89,7 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen ${currentPage === 'home' ? 'h-auto md:h-[100dvh] md:max-h-[100dvh] md:overflow-hidden' : ''} bg-[#F2EEE7] text-[#111111] selection:bg-[#D8D12B]/40 relative flex flex-col justify-between w-full max-w-full overflow-x-hidden`}>
+    <div className={`min-h-[100dvh] ${currentPage === 'home' ? 'h-auto md:h-[100dvh] md:max-h-[100dvh] md:overflow-hidden' : ''} bg-[#F2EEE7] text-[#111111] selection:bg-[#D8D12B]/40 relative flex flex-col justify-between w-full max-w-full overflow-x-hidden`}>
       
       {/* HEADER NAVIGATION BAR (REPRODUCED LUXURY EDITORIAL MINIMAL STYLE) */}
       <header className="w-full border-b border-[#D8D2C8] py-2 sm:py-3 px-4 sm:px-6 md:px-12 flex justify-between items-center bg-[#F2EEE7]/95 backdrop-blur-md sticky top-0 z-40">
@@ -207,7 +207,7 @@ export default function App() {
       </header>
 
       {/* PAGE TRANSITION ROOT FRAME */}
-      <div className={`flex-grow w-full ${currentPage === 'home' ? 'flex flex-col justify-center overflow-visible md:overflow-hidden py-2 md:py-4 md:my-auto' : 'py-4 md:py-8'}`}>
+      <div className={`flex-grow w-full ${currentPage === 'home' ? 'flex flex-col justify-center overflow-visible md:overflow-hidden py-2 md:py-4 md:my-auto' : 'py-4 pb-2 md:py-8'}`}>
         <AnimatePresence mode="wait">
           {currentPage === 'home' && (
             <motion.div
@@ -316,7 +316,7 @@ export default function App() {
               animate="animate"
               exit="exit"
               variants={pageVariants}
-              className="max-w-6xl mx-auto px-4 md:px-8 space-y-8 sm:space-y-12 md:space-y-16 py-4 sm:py-6 md:py-12"
+              className="max-w-6xl mx-auto px-4 md:px-8 space-y-8 sm:space-y-12 md:space-y-16 pt-4 pb-2 sm:py-6 md:py-12"
             >
               
               {/* SECTION 02: MY INTRODUCTION */}
@@ -552,7 +552,7 @@ export default function App() {
               animate="animate"
               exit="exit"
               variants={pageVariants}
-              className="max-w-6xl mx-auto px-4 md:px-8 space-y-16 py-6 md:py-12 text-left"
+              className="max-w-6xl mx-auto px-4 md:px-8 space-y-16 pt-6 pb-2 md:py-12 text-left"
             >
               {/* WORK PORTFOLIO HEADER */}
               <div className="space-y-4 max-w-3xl mb-12">
@@ -658,7 +658,7 @@ export default function App() {
               animate="animate"
               exit="exit"
               variants={pageVariants}
-              className="max-w-6xl mx-auto px-4 md:px-8 py-6 md:py-12"
+              className="max-w-6xl mx-auto px-4 md:px-8 pt-6 pb-2 md:py-12"
             >
               <FAQPage onNavigate={(page) => setCurrentPage(page)} />
             </motion.div>
@@ -702,8 +702,8 @@ export default function App() {
 
       {/* Styled Minimal Magazine Footer */}
       <footer 
-        className={`border-t border-[#D8D2C8] ${currentPage === 'home' ? 'hidden md:block py-2 sm:py-4 px-4 sm:px-6' : 'block py-8 px-6'} md:px-12 bg-[#FAF8F4] text-[#666666] text-xs font-mono`}
-        style={{ paddingBottom: currentPage === 'home' ? '12px' : '32px', marginTop: '-1px' }}
+        className={`border-t border-[#D8D2C8] ${currentPage === 'home' ? 'hidden md:block py-2 sm:py-4 px-4 sm:px-6' : 'block py-4 px-6'} md:px-12 bg-[#FAF8F4] text-[#666666] text-xs font-mono`}
+        style={{ paddingBottom: currentPage === 'home' ? '12px' : '16px', marginTop: '-1px' }}
       >
         <div className="max-w-7xl mx-auto flex justify-center items-center">
           <div className="text-center tracking-wider opacity-80">
