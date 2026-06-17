@@ -14,6 +14,7 @@ export const PERSONAL_INFO = {
     intro: '/src/assets/images/nitish_intro_1780860111040.png',
     about1: '/src/assets/images/nitish_about_1_1780860132213.png',
     about2: '/src/assets/images/builder_desk_detail_1780860201223.png',
+    teamBannerWide: 'https://www.image2url.com/r2/default/images/1781703088282-19768e70-3da5-4f0b-bf35-dc500e6aa547.png',
   },
   contact: {
     email: 'nitishkaushal17@gmail.com',

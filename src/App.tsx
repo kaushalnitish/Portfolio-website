@@ -94,21 +94,7 @@ export default function App() {
       {/* HEADER NAVIGATION BAR (REPRODUCED LUXURY EDITORIAL MINIMAL STYLE) */}
       <header className="w-full border-b border-[#D8D2C8] py-2 sm:py-3 px-4 sm:px-6 md:px-12 flex justify-between items-center bg-[#F2EEE7]/95 backdrop-blur-md sticky top-0 z-40 relative">
         
-        {/* Responsive Logo (Stacked on mobile, inline on desktop) */}
-        <button 
-          onClick={() => { setCurrentPage('home'); setIsMobileMenuOpen(false); }}
-          className="flex flex-col md:flex-row md:items-center text-left leading-[0.85] md:leading-normal font-sans font-black tracking-tighter uppercase text-[#111111] hover:text-[#D8D12B] transition-colors cursor-pointer select-none"
-        >
-          {/* Mobile Stacked Brand Label */}
-          <div className="flex flex-col md:hidden text-left leading-[0.9] text-[13px] font-extrabold tracking-tight">
-            <span>NITISH</span>
-            <span>KAUSHAL</span>
-          </div>
-          {/* Desktop Single-Line Elegant Brand Label */}
-          <span className="hidden md:inline font-mono text-xs uppercase tracking-widest font-bold">
-            NITISH KAUSHAL
-          </span>
-        </button>
+
 
         {/* HIGH-END INTERACTIVE TAB NAVIGATOR (DESKTOP ONLY) */}
         <nav className="hidden md:flex gap-4 md:gap-7 items-center text-[11px] font-mono tracking-widest uppercase text-[#666666]">
@@ -233,14 +219,6 @@ export default function App() {
               className="max-w-7xl mx-auto px-6 md:px-12 md:my-auto w-full relative"
               style={{ fontSize: '25px', lineHeight: '13px', marginLeft: 'auto', marginRight: 'auto' }}
             >
-              {/* Subtle noise/grain texture overlay for a physical, editorial magazine feel */}
-              <div 
-                className="absolute inset-0 pointer-events-none opacity-[0.04] mix-blend-multiply z-30" 
-                style={{ 
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` 
-                }}
-              />
-              
               {/* BRAND REPRODUCED MAIN CONTENT FRAME: HIGH INTENSITY RESEMBLANCE (RESPONSIVE VIEWPORT) */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-8 items-center relative h-[calc(100vh-80px)] md:h-[calc(100vh-160px)] md:max-h-[68vh] min-h-0 w-full overflow-hidden pb-4 md:pb-0">
                 
@@ -410,6 +388,16 @@ export default function App() {
                 </div>
               </section>
 
+              {/* VISUAL SEPARATOR BANNER (STANDARD RATIO TEAM BANNER) */}
+              <div className="max-w-3xl sm:max-w-4xl mx-auto w-full bg-[#FAF8F4] border-2 border-[#111111] rounded-2xl overflow-hidden shadow-[4px_4px_0px_0px_#111111] sm:shadow-[6px_6px_0px_0px_#111111] relative aspect-video">
+                <img
+                  src={PERSONAL_INFO.images.teamBannerWide}
+                  alt="Nitish Kaushal's agency team at work - We're here for you"
+                  className="w-full h-full object-contain select-none"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+
               {/* SECTION 02.5: CAPABILITIES & SERVICES SPECIFICATION */}
               <ServicesOverview />
 
@@ -543,40 +531,6 @@ export default function App() {
                 </div>
               </section>
 
-              {/* Bottom CTA Panel */}
-              <div className="bg-[#FAF8F4] border-2 border-[#111111] rounded-2xl p-4 sm:p-6 md:p-10 shadow-[4px_4px_0px_0px_#111111] sm:shadow-[6px_6px_0px_0px_#111111] text-left space-y-6">
-                <div className="space-y-3">
-                  <span className="text-[10px] font-mono uppercase tracking-wider bg-[#D8D12B] text-[#111111] border border-[#111111] px-2.5 py-1 rounded inline-block font-bold">
-                    WORK WITH US
-                  </span>
-                  <h4 className="text-xl xs:text-2xl md:text-3.5xl font-sans font-black text-[#111111] uppercase tracking-tight leading-[1.1] md:leading-none">
-                    Need More Than Just A Website?
-                  </h4>
-                  <p className="text-[11px] xs:text-xs md:text-sm text-[#111111]/85 leading-snug xs:leading-normal md:leading-relaxed font-sans font-medium max-w-3xl">
-                    We don't just build websites. We focus on your business goals first. Every solution we launch is designed around your daily setups—from guest table reservations to custom mobile order pages—to directly grow your brand.
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                  <button
-                    onClick={() => {
-                      setCurrentPage('enquiry');
-                    }}
-                    className="bg-[#D8D12B] hover:bg-[#111111] text-[#111111] hover:text-white border-2 border-[#111111] px-6 py-3.5 rounded-xl font-mono text-[11px] uppercase tracking-widest font-black shadow-[4px_4px_0px_0px_#111111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_0px_#111111] cursor-pointer text-center transition-all font-bold"
-                  >
-                    Apply For Demo App
-                  </button>
-                  <button
-                    onClick={() => {
-                      setCurrentPage('enquiry');
-                    }}
-                    className="bg-[#FAF8F4] hover:bg-[#D8D12B]/10 border-2 border-[#111111] text-[#111111] px-6 py-3.5 rounded-xl font-mono text-[11px] uppercase tracking-widest font-black cursor-pointer text-center transition-all flex items-center justify-center gap-1.5 font-bold"
-                  >
-                    Book A Call
-                  </button>
-                </div>
-              </div>
-
               {/* BACK TO ROOT BUTTONS */}
               <div className="pt-6 border-t-2 border-[#111111] flex justify-between items-center">
                 <button
@@ -678,75 +632,10 @@ export default function App() {
                     setCurrentPage('enquiry');
                   }}
                 />
-
-                {/* Global conversion lead capture section */}
-                <div className="bg-[#FAF8F4] border-2 border-[#111111] rounded-2xl p-6 md:p-10 shadow-[6px_6px_0px_0px_#111111] text-left space-y-6 mt-8">
-                  <div className="space-y-3">
-                    <h4 className="text-xl xs:text-2xl md:text-3.5xl font-sans font-black text-[#111111] uppercase tracking-tight leading-[1.1] md:leading-none">
-                      Ready To Launch Your Own App?
-                    </h4>
-                    <p className="text-[11px] xs:text-xs md:text-sm text-[#111111]/85 leading-snug xs:leading-normal md:leading-relaxed font-sans font-medium max-w-3xl">
-                      Whether you need a mobile web app, custom dining reservation platform, or operations helper, we make it simple to launch.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                    <button
-                      onClick={() => {
-                        setCurrentPage('enquiry');
-                      }}
-                      className="bg-[#D8D12B] hover:bg-[#111111] text-[#111111] hover:text-white border-2 border-[#111111] px-6 py-3.5 rounded-xl font-mono text-[11px] uppercase tracking-widest font-black shadow-[4px_4px_0px_0px_#111111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_0px_#111111] cursor-pointer text-center transition-all font-bold"
-                    >
-                      Apply For Demo App
-                    </button>
-                    <button
-                      onClick={() => {
-                        setCurrentPage('enquiry');
-                      }}
-                      className="bg-[#FAF8F4] hover:bg-[#D8D12B]/10 border-2 border-[#111111] text-[#111111] px-6 py-3.5 rounded-xl font-mono text-[11px] uppercase tracking-widest font-black cursor-pointer text-center transition-all flex items-center justify-center gap-1.5 font-bold"
-                    >
-                      Book A Call
-                    </button>
-                  </div>
-                </div>
               </section>
 
               {/* SECTION 05.5: CREATIVE CAMPAIGNS SEPARATE GALLERY CATEGORY */}
               <CreativeCampaigns />
-
-              {/* Bottom CTA Panel */}
-              <div className="bg-[#FAF8F4] border-2 border-[#111111] rounded-2xl p-4 sm:p-6 md:p-10 shadow-[4px_4px_0px_0px_#111111] sm:shadow-[6px_6px_0px_0px_#111111] text-left space-y-6">
-                <div className="space-y-3">
-                  <span className="text-[10px] font-mono uppercase tracking-wider bg-[#D8D12B] text-[#111111] border border-[#111111] px-2.5 py-1 rounded inline-block font-bold">
-                    WORK WITH US
-                  </span>
-                  <h4 className="text-xl xs:text-2xl md:text-3.5xl font-sans font-black text-[#111111] uppercase tracking-tight leading-[1.1] md:leading-none">
-                    Need More Than Just A Website?
-                  </h4>
-                  <p className="text-[11px] xs:text-xs md:text-sm text-[#111111]/85 leading-snug xs:leading-normal md:leading-relaxed font-sans font-medium max-w-3xl">
-                    We don't just build websites. We focus on your business goals first. Every solution we launch is designed around your daily setups—from guest table reservations to custom mobile order pages—to directly grow your brand.
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                  <button
-                    onClick={() => {
-                      setCurrentPage('enquiry');
-                    }}
-                    className="bg-[#D8D12B] hover:bg-[#111111] text-[#111111] hover:text-white border-2 border-[#111111] px-6 py-3.5 rounded-xl font-mono text-[11px] uppercase tracking-widest font-black shadow-[4px_4px_0px_0px_#111111] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_0px_#111111] cursor-pointer text-center transition-all font-bold"
-                  >
-                    Apply For Demo App
-                  </button>
-                  <button
-                    onClick={() => {
-                      setCurrentPage('enquiry');
-                    }}
-                    className="bg-[#FAF8F4] hover:bg-[#D8D12B]/10 border-2 border-[#111111] text-[#111111] px-6 py-3.5 rounded-xl font-mono text-[11px] uppercase tracking-widest font-black cursor-pointer text-center transition-all flex items-center justify-center gap-1.5 font-bold"
-                  >
-                    Book A Call
-                  </button>
-                </div>
-              </div>
 
               {/* BACK TO ROOT BUTTONS */}
               <div className="pt-6 border-t-2 border-[#111111] flex justify-between items-center">
