@@ -21,7 +21,11 @@ import {
   ShieldCheck,
   ChevronDown,
   ChevronUp,
-  HelpCircle
+  HelpCircle,
+  Home,
+  LayoutGrid,
+  Folder,
+  User
 } from 'lucide-react';
 
 import { PERSONAL_INFO, CURRENTLY_BUILDING, PROJECTS, BUILD_PROCESS, CLIENT_BRANDS } from './data';
@@ -38,7 +42,6 @@ import FAQPage from './components/FAQPage';
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'work' | 'faq' | 'contact' | 'enquiry'>('home');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   useEffect(() => {
@@ -92,9 +95,9 @@ export default function App() {
     <div className={`min-h-[100dvh] ${currentPage === 'home' ? 'h-auto md:h-[100dvh] md:max-h-[100dvh] md:overflow-hidden' : ''} bg-[#F2EEE7] text-[#111111] selection:bg-[#D8D12B]/40 relative flex flex-col justify-between w-full max-w-full overflow-x-hidden`}>
       
       {/* HEADER NAVIGATION BAR (REPRODUCED LUXURY EDITORIAL MINIMAL STYLE) */}
-      <header className="w-full border-b border-[#D8D2C8] py-2 sm:py-3 px-4 sm:px-6 md:px-12 flex justify-between items-center bg-[#F2EEE7]/95 backdrop-blur-md sticky top-0 z-40">
+      <header className="w-full border-b border-[#D8D2C8] py-3 px-4 sm:px-6 md:px-12 flex justify-between items-center bg-[#F2EEE7]/95 backdrop-blur-md sticky top-0 z-40">
         
-
+        {/* BRAND WORDMARK (Removed as requested) */}
 
         {/* HIGH-END INTERACTIVE TAB NAVIGATOR (DESKTOP ONLY) */}
         <nav className="hidden md:flex gap-4 md:gap-7 items-center text-[11px] font-mono tracking-widest uppercase text-[#666666]">
@@ -141,73 +144,10 @@ export default function App() {
           <span className="w-2.5 h-2.5 rounded-full bg-[#D8D12B] inline-block ml-1" />
         </nav>
 
-        {/* MOBILE NAVIGATION CONTROLS (EXACT MOCKUP ACCORDANCE) */}
-        <div className="flex md:hidden items-center gap-3">
-          {/* Hamburger Menu Icon */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="flex flex-col justify-between w-5 h-3.5 focus:outline-none cursor-pointer group"
-            id="mobile-hud-menu-btn"
-          >
-            <span className={`w-full h-[2px] bg-[#111111] rounded-sm transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-[6px]' : ''}`} />
-            <span className={`w-full h-[2px] bg-[#111111] rounded-sm transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-            <span className={`w-full h-[2px] bg-[#111111] rounded-sm transition-transform duration-300 ${isMobileMenuOpen ? '-rotate-45 translate-y-[-6px]' : ''}`} />
-          </button>
-          {/* Small Gold Yellow Dot button right next to the menu */}
-          <span 
-            onClick={() => { setCurrentPage('work'); setIsMobileMenuOpen(false); }}
-            className="w-2.5 h-2.5 rounded-full bg-[#D8D12B] cursor-pointer hover:scale-110 active:scale-95 transition-transform" 
-          />
-        </div>
-
-        {/* MOBILE SLIDE-DOWN NAVIGATION DRAWER */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div 
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute top-full left-0 right-0 bg-[#F2EEE7] border-b border-[#D8D2C8] py-4 px-6 flex flex-col gap-3 md:hidden z-50 shadow-[0_10px_20px_rgba(17,17,17,0.08)]"
-            >
-              <button 
-                onClick={() => { setCurrentPage('home'); setIsMobileMenuOpen(false); }}
-                className={`text-left font-mono text-[11px] tracking-wider uppercase py-2 border-b border-[#D8D2C8]/50 ${currentPage === 'home' ? 'text-[#111111] font-bold' : 'text-[#666666]'}`}
-              >
-                // HOME
-              </button>
-              <button 
-                onClick={() => { setCurrentPage('about'); setIsMobileMenuOpen(false); }}
-                className={`text-left font-mono text-[11px] tracking-wider uppercase py-2 border-b border-[#D8D2C8]/50 ${currentPage === 'about' ? 'text-[#111111] font-bold' : 'text-[#666666]'}`}
-              >
-                // ABOUT
-              </button>
-              <button 
-                onClick={() => { setCurrentPage('work'); setIsMobileMenuOpen(false); }}
-                className={`text-left font-mono text-[11px] tracking-wider uppercase py-2 border-b border-[#D8D2C8]/50 ${currentPage === 'work' ? 'text-[#111111] font-bold' : 'text-[#666666]'}`}
-              >
-                // WORK
-              </button>
-              <button 
-                onClick={() => { setCurrentPage('faq'); setIsMobileMenuOpen(false); }}
-                className={`text-left font-mono text-[11px] tracking-wider uppercase py-2 border-b border-[#D8D2C8]/50 ${currentPage === 'faq' ? 'text-[#111111] font-bold' : 'text-[#666666]'}`}
-              >
-                // FAQ
-              </button>
-              <button 
-                onClick={() => { setCurrentPage('contact'); setIsMobileMenuOpen(false); }}
-                className={`text-left font-mono text-[11px] tracking-wider uppercase py-2 ${currentPage === 'contact' ? 'text-[#111111] font-bold' : 'text-[#666666]'}`}
-              >
-                // CONTACT
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
       </header>
 
       {/* PAGE TRANSITION ROOT FRAME */}
-      <div className={`flex-grow w-full ${currentPage === 'home' ? 'flex flex-col justify-center overflow-visible md:overflow-hidden py-2 md:py-4 md:my-auto' : 'py-4 pb-2 md:py-8'}`}>
+      <div className={`flex-grow w-full pb-20 md:pb-0 ${currentPage === 'home' ? 'flex flex-col justify-center overflow-visible md:overflow-hidden py-2 md:py-4 md:my-auto' : 'py-4 pb-24 md:py-8'}`}>
         <AnimatePresence mode="wait">
           {currentPage === 'home' && (
             <motion.div
@@ -702,8 +642,8 @@ export default function App() {
 
       {/* Styled Minimal Magazine Footer */}
       <footer 
-        className={`border-t border-[#D8D2C8] ${currentPage === 'home' ? 'hidden md:block py-2 sm:py-4 px-4 sm:px-6' : 'block py-4 px-6'} md:px-12 bg-[#FAF8F4] text-[#666666] text-xs font-mono`}
-        style={{ paddingBottom: currentPage === 'home' ? '12px' : '16px', marginTop: '-1px' }}
+        className={`border-t border-[#D8D2C8] ${currentPage === 'home' ? 'hidden md:block py-2 sm:py-4 px-4 sm:px-6' : 'block py-4 px-6 pb-28 md:pb-4'} md:px-12 bg-[#FAF8F4] text-[#666666] text-xs font-mono`}
+        style={{ marginTop: '-1px' }}
       >
         <div className="max-w-7xl mx-auto flex justify-center items-center">
           <div className="text-center tracking-wider opacity-80">
@@ -725,6 +665,101 @@ export default function App() {
           />
         )}
       </AnimatePresence>
+
+      {/* PERSISTENT LUXURY BOTTOM NAV BAR (MOBILE ONLY) */}
+      <div id="mobile-bottom-nav" className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#FAF8F4]/80 backdrop-blur-md border-t border-[#D8D2C8] pb-[calc(env(safe-area-inset-bottom)+8px)] pt-2 px-4 shadow-[0_-8px_30px_rgba(17,17,17,0.06)] rounded-t-2xl">
+        <div className="max-w-md mx-auto flex justify-between items-center px-1">
+          {/* NAV ITEM: HOME */}
+          <button
+            onClick={() => setCurrentPage('home')}
+            className="flex flex-col items-center justify-center gap-1 py-1 flex-1 relative cursor-pointer"
+          >
+            <Home 
+              strokeWidth={1.5} 
+              className={`w-[18px] h-[18px] transition-all duration-300 ${currentPage === 'home' ? 'text-[#111111] scale-110' : 'text-[#111111]/35 hover:text-[#111111]'}`} 
+            />
+            <span className={`text-[9px] font-mono tracking-widest font-bold transition-all duration-300 mt-0.5 ${currentPage === 'home' ? 'text-[#111111] font-black' : 'text-[#111111]/40'}`}>
+              HOME
+            </span>
+            {currentPage === 'home' && (
+              <span className="absolute bottom-[-3px] w-1.5 h-1.5 rounded-full bg-[#111111]" />
+            )}
+          </button>
+
+          {/* NAV ITEM: WORK */}
+          <button
+            onClick={() => setCurrentPage('work')}
+            className="flex flex-col items-center justify-center gap-1 py-1 flex-1 relative cursor-pointer"
+          >
+            <LayoutGrid 
+              strokeWidth={1.5} 
+              className={`w-[18px] h-[18px] transition-all duration-300 ${currentPage === 'work' ? 'text-[#111111] scale-110' : 'text-[#111111]/35 hover:text-[#111111]'}`} 
+            />
+            <span className={`text-[9px] font-mono tracking-widest font-bold transition-all duration-300 mt-0.5 ${currentPage === 'work' ? 'text-[#111111] font-black' : 'text-[#111111]/40'}`}>
+              WORK
+            </span>
+            {currentPage === 'work' && (
+              <span className="absolute bottom-[-3px] w-1.5 h-1.5 rounded-full bg-[#111111]" />
+            )}
+          </button>
+
+          {/* NAV ITEM: PROJECTS */}
+          <button
+            onClick={() => {
+              setCurrentPage('work');
+              setTimeout(() => {
+                const element = document.getElementById('ships');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }, 120);
+            }}
+            className="flex flex-col items-center justify-center gap-1 py-1 flex-1 relative cursor-pointer"
+          >
+            <Folder 
+              strokeWidth={1.5} 
+              className={`w-[18px] h-[18px] transition-all duration-300 ${currentPage === 'work' ? 'text-[#111111]/80 scale-110' : 'text-[#111111]/35 hover:text-[#111111]'}`} 
+            />
+            <span className={`text-[9px] font-mono tracking-widest font-bold transition-all duration-300 mt-0.5 ${currentPage === 'work' ? 'text-[#111111]/80 font-black' : 'text-[#111111]/40'}`}>
+              PROJECTS
+            </span>
+          </button>
+
+          {/* NAV ITEM: ABOUT */}
+          <button
+            onClick={() => setCurrentPage('about')}
+            className="flex flex-col items-center justify-center gap-1 py-1 flex-1 relative cursor-pointer"
+          >
+            <User 
+              strokeWidth={1.5} 
+              className={`w-[18px] h-[18px] transition-all duration-300 ${currentPage === 'about' ? 'text-[#111111] scale-110' : 'text-[#111111]/35 hover:text-[#111111]'}`} 
+            />
+            <span className={`text-[9px] font-mono tracking-widest font-bold transition-all duration-300 mt-0.5 ${currentPage === 'about' ? 'text-[#111111] font-black' : 'text-[#111111]/40'}`}>
+              ABOUT
+            </span>
+            {currentPage === 'about' && (
+              <span className="absolute bottom-[-3px] w-1.5 h-1.5 rounded-full bg-[#111111]" />
+            )}
+          </button>
+
+          {/* NAV ITEM: CONTACT */}
+          <button
+            onClick={() => setCurrentPage('contact')}
+            className="flex flex-col items-center justify-center gap-1 py-1 flex-1 relative cursor-pointer"
+          >
+            <Mail 
+              strokeWidth={1.5} 
+              className={`w-[18px] h-[18px] transition-all duration-300 ${currentPage === 'contact' ? 'text-[#111111] scale-110' : 'text-[#111111]/35 hover:text-[#111111]'}`} 
+            />
+            <span className={`text-[9px] font-mono tracking-widest font-bold transition-all duration-300 mt-0.5 ${currentPage === 'contact' ? 'text-[#111111] font-black' : 'text-[#111111]/40'}`}>
+              CONTACT
+            </span>
+            {currentPage === 'contact' && (
+              <span className="absolute bottom-[-3px] w-1.5 h-1.5 rounded-full bg-[#111111]" />
+            )}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
