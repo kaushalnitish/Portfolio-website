@@ -35,6 +35,7 @@ export default function FAQPage({
   const [isSubmitSuccess, setIsSubmitSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("ALL");
 
   // Dialogue threat state for AI dialogue history
   interface ChatMessage {
@@ -225,74 +226,107 @@ export default function FAQPage({
       </div>
 
       {/* FAQ VERTICAL DOCUMENTATION LIST */}
-      <div className="border-t-2 border-[#111111] pt-6">
-        <div className="space-y-3 sm:space-y-4">
-          {faqItems.map((item, index) => {
-            const isOpen = expandedIndex === index;
+      <div className="border-t-2 border-[#111111] pt-6 space-y-6">
+        {/* SLEEK CATEGORY FILTER TABS (PRO-LEVEL COMPACT DESIGN WITH SWIPE SCROLL ON MOBILE) */}
+        <div className="flex gap-2 overflow-x-auto pb-3 -mx-4 px-4 sm:mx-0 sm:px-0 sm:flex-wrap scrollbar-none select-none">
+          {[
+            { id: "ALL", label: "ALL" },
+            { id: "BUSINESS STRATEGY", label: "STRATEGY" },
+            { id: "MOBILE WEB APPS", label: "APPS" },
+            { id: "HOSPITALITY SYSTEMS", label: "SYSTEMS" },
+            { id: "LANDING PAGES", label: "LANDINGS" },
+            { id: "DESIGN DIRECTION", label: "DESIGN" },
+            { id: "AI AUTOMATION", label: "AI" }
+          ].map((cat) => {
+            const isSelected = selectedCategory === cat.id;
             return (
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.03, duration: 0.3 }}
-                key={index}
-                className="border-2 border-[#111111] rounded-[12px] bg-[#FAF8F4] hover:bg-white shadow-[3px_3px_0px_0px_#111111] hover:shadow-[4px_4px_0px_0px_#111111] transition-all overflow-hidden"
+              <button
+                key={cat.id}
+                onClick={() => {
+                  setSelectedCategory(cat.id);
+                  setExpandedIndex(null);
+                }}
+                className={`transition-all duration-150 rounded-xl px-4 py-2 text-[10px] sm:text-xs font-mono font-black tracking-wider uppercase border-2 border-[#111111] shrink-0 active:scale-95 ${
+                  isSelected
+                    ? "bg-[#D8D12B] text-[#111111] shadow-[2px_2px_0px_0px_#111111]"
+                    : "bg-white text-[#111111]/75 hover:text-[#111111] hover:bg-neutral-50"
+                }`}
               >
-                {/* Header Toggle Row */}
-                <div
-                  onClick={() => setExpandedIndex(isOpen ? null : index)}
-                  className="flex items-center justify-between gap-4 py-[18px] px-[24px] sm:py-[22px] sm:px-[32px] cursor-pointer select-none"
-                >
-                  <div className="flex flex-col gap-2 flex-grow text-left">
-                    {/* Category pill */}
-                    <span className="self-start text-[9px] font-mono font-bold uppercase tracking-wider bg-[#111111]/5 text-[#111111]/60 border border-[#111111]/10 px-1.5 py-0.5 rounded leading-none">
-                      {item.category}
-                    </span>
-                    {/* Question */}
-                    <h3
-                      className="text-[17px] sm:text-[19px] font-sans font-extrabold text-[#111111] uppercase tracking-normal select-text"
-                      style={{ lineHeight: "1.35" }}
-                    >
-                      {item.q}
-                    </h3>
-                  </div>
-
-                  {/* Toggle Caret Icon Box */}
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 bg-white border-2 border-[#111111] rounded-[6px] flex items-center justify-center shrink-0 shadow-[2px_2px_0px_0px_#111111] hover:bg-[#D8D12B]/10 active:translate-x-[0.5px] active:translate-y-[0.5px] transition-all">
-                    {isOpen ? (
-                      <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 text-[#111111]" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 text-[#111111]" />
-                    )}
-                  </div>
-                </div>
-
-                {/* Collapsible Content */}
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: "easeInOut" }}
-                    >
-                      <div className="border-t-2 border-[#111111]/10 px-[24px] pb-[20px] pt-[16px] sm:px-[32px] sm:pb-[24px] sm:pt-[20px] text-left">
-                        {/* Separator Accent */}
-                        <div className="w-10 h-[2px] bg-[#D8D12B] border-t border-[#111111] mb-3" />
-                        
-                        {/* Answer */}
-                        <p
-                          className="text-[15px] sm:text-[16px] text-[#111111]/85 font-sans font-medium select-text max-w-[75ch]"
-                          style={{ lineHeight: "1.7" }}
-                        >
-                          {item.a}
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
+                {cat.label}
+              </button>
             );
           })}
+        </div>
+
+        <div className="space-y-2.5">
+          {faqItems
+            .filter((item) => selectedCategory === "ALL" || item.category === selectedCategory)
+            .map((item, index) => {
+              const isOpen = expandedIndex === index;
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(index * 0.02, 0.2), duration: 0.2 }}
+                  key={index}
+                  className="border-2 border-[#111111] rounded-xl bg-[#FAF8F4] hover:bg-white shadow-[2px_2px_0px_0px_#111111] hover:shadow-[3px_3px_0px_0px_#111111] transition-all overflow-hidden"
+                >
+                  {/* Header Toggle Row */}
+                  <div
+                    onClick={() => setExpandedIndex(isOpen ? null : index)}
+                    className="flex items-center justify-between gap-3 py-3.5 px-4 sm:py-5 sm:px-6 cursor-pointer select-none"
+                  >
+                    <div className="flex flex-col gap-1.5 flex-grow text-left">
+                      {/* Category pill */}
+                      <span className="self-start text-[8px] font-mono font-black uppercase tracking-wider bg-[#111111]/5 text-[#111111]/60 border border-[#111111]/10 px-1.5 py-0.5 rounded leading-none">
+                        {item.category}
+                      </span>
+                      {/* Question */}
+                      <h3
+                        className="text-[13px] xs:text-[14px] sm:text-[17px] font-sans font-black text-[#111111] uppercase tracking-tight select-text"
+                        style={{ lineHeight: "1.3" }}
+                      >
+                        {item.q}
+                      </h3>
+                    </div>
+  
+                    {/* Toggle Caret Icon Box */}
+                    <div className="w-7 h-7 sm:w-8 sm:h-8 bg-white border-2 border-[#111111] rounded-lg flex items-center justify-center shrink-0 shadow-[1.5px_1.5px_0px_0px_#111111] hover:bg-[#D8D12B]/10 active:translate-x-[0.5px] active:translate-y-[0.5px] transition-all">
+                      {isOpen ? (
+                        <ChevronUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#111111]" />
+                      ) : (
+                        <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#111111]" />
+                      )}
+                    </div>
+                  </div>
+  
+                  {/* Collapsible Content */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
+                      >
+                        <div className="border-t-2 border-[#111111]/10 px-4 pb-4 pt-3 sm:px-6 sm:pb-6 sm:pt-4 text-left">
+                          {/* Separator Accent */}
+                          <div className="w-8 h-[2px] bg-[#D8D12B] border-t border-[#111111] mb-2.5" />
+                          
+                          {/* Answer */}
+                          <p
+                            className="text-xs xs:text-sm sm:text-[15px] text-[#111111]/85 font-sans font-medium select-text max-w-[75ch]"
+                            style={{ lineHeight: "1.6" }}
+                          >
+                            {item.a}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
         </div>
       </div>
 

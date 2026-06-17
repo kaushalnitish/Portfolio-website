@@ -207,7 +207,7 @@ export default function App() {
       </header>
 
       {/* PAGE TRANSITION ROOT FRAME */}
-      <div className={`flex-grow w-full ${currentPage === 'home' ? 'flex flex-col justify-center overflow-hidden py-2 md:py-4 md:my-auto' : 'py-4 md:py-8'}`}>
+      <div className={`flex-grow w-full ${currentPage === 'home' ? 'flex flex-col justify-center overflow-visible md:overflow-hidden py-2 md:py-4 md:my-auto' : 'py-4 md:py-8'}`}>
         <AnimatePresence mode="wait">
           {currentPage === 'home' && (
             <motion.div
@@ -220,78 +220,73 @@ export default function App() {
               style={{ fontSize: '25px', lineHeight: '13px', marginLeft: 'auto', marginRight: 'auto' }}
             >
               {/* BRAND REPRODUCED MAIN CONTENT FRAME: HIGH INTENSITY RESEMBLANCE (RESPONSIVE VIEWPORT) */}
-              <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-8 items-center relative h-[calc(100vh-80px)] md:h-[calc(100vh-160px)] md:max-h-[68vh] min-h-0 w-full overflow-hidden pb-4 md:pb-0">
+              <div className="flex flex-col md:grid md:grid-cols-12 gap-5 md:gap-x-8 md:gap-y-4 items-center relative w-full h-auto md:h-[calc(100vh-160px)] md:max-h-[68vh] min-h-0 overflow-visible md:overflow-hidden pb-4 md:pb-0">
                 
-                {/* LEFT TEXT CONTENT PANEL */}
-                <div className="col-span-1 md:col-span-6 flex flex-col justify-center py-0.5 sm:py-1 md:py-2 z-10 space-y-2 sm:space-y-3 lg:space-y-4 min-h-0 text-left">
-                  <div className="space-y-1.5 sm:space-y-2.5 lg:space-y-4">
-                    {/* Stylized Super Typography Name */}
-                    <h1 
-                      className="text-[1.85rem] xs:text-[2.15rem] sm:text-[2.5rem] md:text-5xl lg:text-[4.8rem] xl:text-[5.5rem] font-sans font-black tracking-tighter leading-[0.82] md:leading-[0.85] text-[#111111] uppercase select-none cursor-default"
-                      style={{ marginTop: '2px', marginBottom: '4px', marginLeft: '-1px' }}
+                {/* 1. NAME/HEADLINE */}
+                <h1 
+                  className="order-1 text-[1.85rem] xs:text-[2.15rem] sm:text-[2.5rem] md:text-5xl lg:text-[4.8rem] xl:text-[5.5rem] font-sans font-black tracking-tighter leading-[0.82] md:leading-[0.85] text-[#111111] uppercase select-none cursor-default md:col-span-6 md:col-start-1 md:row-start-1 md:self-end w-full"
+                  style={{ marginTop: '2px', marginBottom: '4px', marginLeft: '-1px' }}
+                >
+                  NITISH<br />KAUSHAL
+                </h1>
+
+                {/* 2. SHORT DESCRIPTION & ROLE PILL */}
+                <div className="order-2 md:order-none md:col-span-6 md:col-start-1 md:row-start-2 flex flex-col gap-3 md:gap-4 md:self-center select-none w-full">
+                  <h2 
+                    className="text-[#111111] tracking-tight text-[13px] xs:text-[14px] sm:text-lg md:text-xl lg:text-2xl font-sans font-extrabold leading-tight max-w-xl cursor-default"
+                    style={{ marginBottom: '2px' }}
+                  >
+                    I Build AI Systems That Help Businesses Get More Customers And Save Time.
+                  </h2>
+
+                  <div className="max-w-full">
+                    <p 
+                      className="text-[#111111]/85 font-mono tracking-widest text-left font-black uppercase text-[9px] xs:text-[10px] md:text-xs cursor-default"
                     >
-                      NITISH<br />KAUSHAL
-                    </h1>
-
-                    {/* Business-Focused Headline */}
-                    <h2 
-                      className="text-[#111111] tracking-tight text-[13px] xs:text-[14px] sm:text-lg md:text-xl lg:text-2xl font-sans font-extrabold leading-tight max-w-xl cursor-default"
-                      style={{ marginBottom: '2px' }}
-                    >
-                      I Build AI Systems That Help Businesses Get More Customers And Save Time.
-                    </h2>
-
-                    {/* Editorial Text Sub-heading */}
-                    <div className="max-w-full">
-                      <p 
-                        className="text-[#111111]/85 font-mono tracking-widest text-left font-black uppercase text-[9px] xs:text-[10px] md:text-xs cursor-default"
-                      >
-                        WEB DEVELOPER // AI AUTOMATION BUILDER
-                      </p>
-                    </div>
-
-                    {/* TWO PROMINENT CONTROL EXPLORE ACTIONS */}
-                    <div 
-                      className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1"
-                    >
-                      <button
-                        onClick={() => setCurrentPage('work')}
-                        id="nav-to-work-btn"
-                        className="bg-[#D8D12B] hover:bg-[#111111] hover:text-white text-[#111111] font-mono uppercase tracking-widest text-[9px] sm:text-[10px] font-bold h-11 md:h-auto py-2 sm:py-3 px-5 border border-[#111111] transition-all cursor-pointer rounded shadow-[2px_2px_0px_0px_#111111] sm:shadow-[3px_3px_0px_0px_#111111] text-center"
-                      >
-                        VIEW PROJECTS →
-                      </button>
-
-                      <button
-                        onClick={() => setCurrentPage('contact')}
-                        id="nav-to-contact-btn"
-                        className="bg-transparent hover:bg-[#111111]/5 text-[#111111] font-mono uppercase tracking-widest text-[9px] sm:text-[10px] font-bold h-11 md:h-auto py-2 sm:py-3 px-5 border border-[#111111] transition-all cursor-pointer rounded text-center"
-                      >
-                        CONTACT ME →
-                      </button>
-                    </div>
+                      WEB DEVELOPER // AI AUTOMATION BUILDER
+                    </p>
                   </div>
                 </div>
 
-                {/* RIGHT IMAGE PANEL - HIGH-END EDITORIAL BORDERLESS PORTRAIT */}
-                <div className="col-span-1 md:col-span-6 h-full flex items-end justify-center relative select-none z-20 overflow-visible min-h-[140px] max-h-[32vh] md:max-h-none">
+                {/* 3. HERO IMAGE BETWEEN CONTENT AND BUTTONS ON MOBILE */}
+                <div className="order-3 md:order-none md:col-span-6 md:col-start-7 md:row-start-1 md:row-span-3 w-full md:h-full flex items-center md:items-end justify-center relative select-none z-20 overflow-visible py-2 md:py-0">
                   {/* Premium soft ambient radial shadow behind key subject focus area */}
-                  <div className="absolute top-[15%] bottom-[5%] left-[10%] right-[10%] h-[75%] bg-[#111111]/[0.04] rounded-full blur-[40px] md:blur-[70px] pointer-events-none z-10" />
+                  <div className="absolute top-[10%] bottom-[5%] left-[10%] right-[10%] md:top-[15%] md:bottom-[5%] h-[80%] md:h-[75%] bg-[#111111]/[0.04] rounded-full blur-[30px] md:blur-[70px] pointer-events-none z-10" />
 
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.98, y: 15 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                    className="h-full w-full flex items-end justify-center overflow-visible relative"
+                    className="w-full h-full flex items-center md:items-end justify-center overflow-visible relative"
                   >
                     <img
                       src={PERSONAL_INFO.images.hero}
                       alt="portrait of Nitish"
-                      className="h-[105%] max-h-[100%] md:max-h-none sm:h-[108%] md:h-[105%] lg:h-[108%] xl:h-[110%] max-w-none w-auto object-contain object-bottom pointer-events-none filter drop-shadow-[0_15px_22px_rgba(17,17,17,0.12)] md:drop-shadow-[0_20px_30px_rgba(17,17,17,0.15)] transform-gpu z-20 origin-bottom transition-all duration-500 ease-out hover:scale-[1.03]"
-                      style={{ maxHeight: 'none' }}
+                      className="w-full max-w-[250px] xs:max-w-[280px] sm:max-w-[320px] md:max-w-none md:w-auto h-auto md:h-[105%] md:max-h-none object-contain md:object-bottom pointer-events-none filter drop-shadow-[0_12px_18px_rgba(17,17,17,0.1)] md:drop-shadow-[0_20px_30px_rgba(17,17,17,0.15)] transform-gpu z-20 origin-bottom transition-all duration-500 ease-out hover:scale-[1.03]"
                       referrerPolicy="no-referrer"
                     />
                   </motion.div>
+                </div>
+
+                {/* 4. PRIMARY & SECONDARY CTA BUTTONS */}
+                <div 
+                  className="order-4 md:order-none md:col-span-6 md:col-start-1 md:row-start-3 md:self-start flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 md:pt-4 w-full"
+                >
+                  <button
+                    onClick={() => setCurrentPage('work')}
+                    id="nav-to-work-btn"
+                    className="bg-[#D8D12B] hover:bg-[#111111] hover:text-white text-[#111111] font-mono uppercase tracking-widest text-[9px] sm:text-[10px] font-bold h-11 md:h-auto py-2 sm:py-3 px-5 border border-[#111111] transition-all cursor-pointer rounded shadow-[2px_2px_0px_0px_#111111] sm:shadow-[3px_3px_0px_0px_#111111] text-center"
+                  >
+                    VIEW PROJECTS →
+                  </button>
+
+                  <button
+                    onClick={() => setCurrentPage('contact')}
+                    id="nav-to-contact-btn"
+                    className="bg-transparent hover:bg-[#111111]/5 text-[#111111] font-mono uppercase tracking-widest text-[9px] sm:text-[10px] font-bold h-11 md:h-auto py-2 sm:py-3 px-5 border border-[#111111] transition-all cursor-pointer rounded text-center"
+                  >
+                    CONTACT ME →
+                  </button>
                 </div>
 
                 {/* DECORATIVE DOT GRID ACCENT (PRECISE REFERENCE) */}
