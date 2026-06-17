@@ -51,7 +51,7 @@ export default function ProjectModal({ project, onClose, onEnquire }: ProjectMod
         </div>
 
         {/* Project Details Panel */}
-        <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto max-h-[70vh] md:max-h-[85vh]">
+        <div className="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-auto max-h-[70dvh] md:max-h-[85dvh]">
           <div>
             <div className="hidden md:flex items-center justify-between mb-4">
               <span className="text-xs uppercase tracking-widest font-mono text-[#666666] border border-[#D8D2C8] px-2.5 py-1 rounded">

@@ -89,10 +89,10 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen ${currentPage === 'home' ? 'h-screen max-h-screen overflow-hidden' : ''} bg-[#F2EEE7] text-[#111111] selection:bg-[#D8D12B]/40 relative flex flex-col justify-between`}>
+    <div className={`min-h-screen ${currentPage === 'home' ? 'h-auto md:h-[100dvh] md:max-h-[100dvh] md:overflow-hidden' : ''} bg-[#F2EEE7] text-[#111111] selection:bg-[#D8D12B]/40 relative flex flex-col justify-between w-full max-w-full overflow-x-hidden`}>
       
       {/* HEADER NAVIGATION BAR (REPRODUCED LUXURY EDITORIAL MINIMAL STYLE) */}
-      <header className="w-full border-b border-[#D8D2C8] py-2 sm:py-3 px-4 sm:px-6 md:px-12 flex justify-between items-center bg-[#F2EEE7]/95 backdrop-blur-md sticky top-0 z-40 relative">
+      <header className="w-full border-b border-[#D8D2C8] py-2 sm:py-3 px-4 sm:px-6 md:px-12 flex justify-between items-center bg-[#F2EEE7]/95 backdrop-blur-md sticky top-0 z-40">
         
 
 
@@ -217,21 +217,21 @@ export default function App() {
               exit="exit"
               variants={pageVariants}
               className="max-w-7xl mx-auto px-6 md:px-12 md:my-auto w-full relative"
-              style={{ fontSize: '25px', lineHeight: '13px', marginLeft: 'auto', marginRight: 'auto' }}
+              style={{ marginLeft: 'auto', marginRight: 'auto' }}
             >
               {/* BRAND REPRODUCED MAIN CONTENT FRAME: HIGH INTENSITY RESEMBLANCE (RESPONSIVE VIEWPORT) */}
-              <div className="flex flex-col md:grid md:grid-cols-12 gap-5 md:gap-x-8 md:gap-y-4 items-center relative w-full h-auto md:h-[calc(100vh-160px)] md:max-h-[68vh] min-h-0 overflow-visible md:overflow-hidden pb-4 md:pb-0">
+              <div className="flex flex-col md:grid md:grid-cols-12 gap-0 md:gap-x-8 md:gap-y-4 items-center relative w-full h-auto md:h-[calc(100dvh-160px)] md:max-h-[68dvh] min-h-0 overflow-visible md:overflow-hidden pb-4 md:pb-0">
                 
                 {/* 1. NAME/HEADLINE */}
                 <h1 
-                  className="order-1 text-[1.85rem] xs:text-[2.15rem] sm:text-[2.5rem] md:text-5xl lg:text-[4.8rem] xl:text-[5.5rem] font-sans font-black tracking-tighter leading-[0.82] md:leading-[0.85] text-[#111111] uppercase select-none cursor-default md:col-span-6 md:col-start-1 md:row-start-1 md:self-end w-full"
+                  className="order-1 text-[1.85rem] xs:text-[2.15rem] sm:text-[2.5rem] md:text-5xl lg:text-[4.8rem] xl:text-[5.5rem] font-sans font-black tracking-tighter leading-[0.82] md:leading-[0.85] text-[#111111] uppercase select-none cursor-default md:col-span-6 md:col-start-1 md:row-start-1 md:self-end w-full mb-3.5 md:mb-0"
                   style={{ marginTop: '2px', marginBottom: '4px', marginLeft: '-1px' }}
                 >
                   NITISH<br />KAUSHAL
                 </h1>
 
                 {/* 2. SHORT DESCRIPTION & ROLE PILL */}
-                <div className="order-2 md:order-none md:col-span-6 md:col-start-1 md:row-start-2 flex flex-col gap-3 md:gap-4 md:self-center select-none w-full">
+                <div className="order-2 md:order-none md:col-span-6 md:col-start-1 md:row-start-2 flex flex-col gap-3 md:gap-4 md:self-center select-none w-full mb-7 md:mb-0">
                   <h2 
                     className="text-[#111111] tracking-tight text-[13px] xs:text-[14px] sm:text-lg md:text-xl lg:text-2xl font-sans font-extrabold leading-tight max-w-xl cursor-default"
                     style={{ marginBottom: '2px' }}
@@ -249,7 +249,7 @@ export default function App() {
                 </div>
 
                 {/* 3. HERO IMAGE BETWEEN CONTENT AND BUTTONS ON MOBILE */}
-                <div className="order-3 md:order-none md:col-span-6 md:col-start-7 md:row-start-1 md:row-span-3 w-full md:h-full flex items-center md:items-end justify-center relative select-none z-20 overflow-visible py-2 md:py-0">
+                <div className="order-3 md:order-none md:col-span-6 md:col-start-7 md:row-start-1 md:row-span-3 w-full md:h-full flex items-center md:items-end justify-center relative select-none z-20 overflow-visible py-2 md:py-0 mb-6 md:mb-0">
                   {/* Premium soft ambient radial shadow behind key subject focus area */}
                   <div className="absolute top-[10%] bottom-[5%] left-[10%] right-[10%] md:top-[15%] md:bottom-[5%] h-[80%] md:h-[75%] bg-[#111111]/[0.04] rounded-full blur-[30px] md:blur-[70px] pointer-events-none z-10" />
 
@@ -270,7 +270,7 @@ export default function App() {
 
                 {/* 4. PRIMARY & SECONDARY CTA BUTTONS */}
                 <div 
-                  className="order-4 md:order-none md:col-span-6 md:col-start-1 md:row-start-3 md:self-start flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 md:pt-4 w-full"
+                  className="order-4 md:order-none md:col-span-6 md:col-start-1 md:row-start-3 md:self-start flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-1 md:pt-4 w-full mb-10 md:mb-0"
                 >
                   <button
                     onClick={() => setCurrentPage('work')}

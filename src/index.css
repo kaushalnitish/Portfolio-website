@@ -8,16 +8,29 @@
 }
 
 @layer base {
+  html {
+    background-color: #F2EEE7;
+    scroll-behavior: smooth;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   body {
     background-color: #F2EEE7;
     color: #111111;
     font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
   }
-  
-  /* Smooth scrolling for editorial feel */
-  html {
-    scroll-behavior: smooth;
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   /* Custom subtle scrollbar */
